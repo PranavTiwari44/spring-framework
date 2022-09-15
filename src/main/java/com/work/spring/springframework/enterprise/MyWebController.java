@@ -9,8 +9,11 @@ import java.util.List;
 @Component
 public class MyWebController {
 
-    @Autowired
     private BusinessService businessService;
+    @Autowired
+    public MyWebController(BusinessService businessService){
+        this.businessService = businessService;
+    }
     public long returnValueFromBusinessService() {
         return businessService.calculateSum();
     }
@@ -18,8 +21,11 @@ public class MyWebController {
 
 @Component
 class BusinessService{
-    @Autowired
     private DataService dataService;
+    @Autowired
+    public BusinessService(DataService dataService){
+        this.dataService = dataService;
+    }
 
     public long calculateSum(){
         List<Integer> data = dataService.getData();
